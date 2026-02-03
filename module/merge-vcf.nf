@@ -43,7 +43,7 @@ process run_MergeVcfs_Picard {
     """
     set -euo pipefail
 
-    java -Xmx${(task.memory - params.gatk_command_mem_diff).getMega()}m -Djava.io.tmpdir=${workDir} \
+    java -Xmx${(task.memory - params.gatk_command_mem_diff).getMega()}m -Djava.io.tmpdir=\$(pwd) \
       -jar /usr/local/share/picard-slim-2.26.10-0/picard.jar MergeVcfs \
       ${all_vcfs} \
       -OUTPUT ${output_filename} \
