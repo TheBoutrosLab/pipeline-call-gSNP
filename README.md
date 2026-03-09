@@ -1,6 +1,6 @@
 # call-gSNP
 
-[![GitHub release](https://img.shields.io/github/v/release/uclahs-cds/pipeline-call-gSNP)](https://github.com/uclahs-cds/pipeline-call-gSNP/actions/workflows/prepare-release.yaml)
+[![GitHub release](https://img.shields.io/github/v/release/theboutroslab/pipeline-call-gSNP)](https://github.com/theboutroslab/pipeline-call-gSNP/actions/workflows/prepare-release.yaml)
 
 1. [Overview](#overview)
 2. [How To Run](#how-to-run)
@@ -14,7 +14,7 @@
 
 ## Overview
 
-This pipeline takes BAMs and corresponding indices from [recalibrate-BAM](https://github.com/uclahs-cds/pipeline-recalibrate-BAM) and runs through GATK4 best practice to call germline short variant (SNP and INDEL). It can be run with any combination of normal and tumor samples (normal only, tumor only, normal-tumor paired, multiple normal and tumor samples).
+This pipeline takes BAMs and corresponding indices from [recalibrate-BAM](https://github.com/theboutroslab/pipeline-recalibrate-BAM) and runs through GATK4 best practice to call germline short variant (SNP and INDEL). It can be run with any combination of normal and tumor samples (normal only, tumor only, normal-tumor paired, multiple normal and tumor samples).
 
 ---
 
@@ -28,9 +28,9 @@ This pipeline takes BAMs and corresponding indices from [recalibrate-BAM](https:
 
 2. Update the YAML.
 
-3. Download the submission script (submit_nextflow_pipeline.py) from [here](https://github.com/uclahs-cds/tool-submit-nf), and submit your pipeline below.
+3. Download the submission script (submit_nextflow_pipeline.py) from [here](https://github.com/theboutroslab/tool-submit-nf), and submit your pipeline below.
 
-> **Note**: Because this pipeline uses an image stored in the GitHub Container Registry, you must follow the steps listed in the [Docker Introduction](https://uclahs-cds.atlassian.net/wiki/spaces/BOUTROSLAB/pages/3223396/Container+Registry+-+GitHub+Packages) on Confluence to set up a PAT for your GitHub account and log into the registry on the cluster before running this pipeline.
+<!-- **Note**: Because this pipeline uses an image stored in the GitHub Container Registry, you must follow the steps listed in the [Docker Introduction](https://theboutroslab.atlassian.net/wiki/spaces/BOUTROSLAB/pages/3223396/Container+Registry+-+GitHub+Packages) on Confluence to set up a PAT for your GitHub account and log into the registry on the cluster before running this pipeline. -->
 
 - YAML input
 ```
@@ -215,15 +215,15 @@ base_resource_update {
 
 ## Discussions
 
-- [Issue tracker](https://github.com/uclahs-cds/pipeline-call-gSNP/issues) to report errors and enhancement ideas.
-- Discussions can take place in [call-gSNP Discussions](https://github.com/uclahs-cds/pipeline-call-gSNP/discussions)
-- [call-gSNP pull requests](https://github.com/uclahs-cds/pipeline-call-gSNP/pulls) are also open for discussion
+- [Issue tracker](https://github.com/theboutroslab/pipeline-call-gSNP/issues) to report errors and enhancement ideas.
+- Discussions can take place in [call-gSNP Discussions](https://github.com/theboutroslab/pipeline-call-gSNP/discussions)
+- [call-gSNP pull requests](https://github.com/theboutroslab/pipeline-call-gSNP/pulls) are also open for discussion
 
 ---
 
 ## Contributors
 
-Please see list of [Contributors](https://github.com/uclahs-cds/pipeline-call-gSNP/graphs/contributors) at GitHub.
+Please see list of [Contributors](https://github.com/theboutroslab/pipeline-call-gSNP/graphs/contributors) at GitHub.
 
 ---
 
