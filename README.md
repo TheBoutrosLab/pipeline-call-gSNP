@@ -30,7 +30,7 @@ This pipeline takes BAMs and corresponding indices from [recalibrate-BAM](https:
 
 3. Download the submission script (submit_nextflow_pipeline.py) from [here](https://github.com/theboutroslab/tool-submit-nf), and submit your pipeline below.
 
-> **Note**: Because this pipeline uses an image stored in the GitHub Container Registry, you must follow the steps listed in the [Docker Introduction](https://theboutroslab.atlassian.net/wiki/spaces/BOUTROSLAB/pages/3223396/Container+Registry+-+GitHub+Packages) on Confluence to set up a PAT for your GitHub account and log into the registry on the cluster before running this pipeline.
+<!-- **Note**: Because this pipeline uses an image stored in the GitHub Container Registry, you must follow the steps listed in the [Docker Introduction](https://theboutroslab.atlassian.net/wiki/spaces/BOUTROSLAB/pages/3223396/Container+Registry+-+GitHub+Packages) on Confluence to set up a PAT for your GitHub account and log into the registry on the cluster before running this pipeline. -->
 
 - YAML input
 ```
@@ -132,7 +132,7 @@ For normal-only or tumor-only samples, exclude the fields for the other state.
 | `bundle_phase1_1000g_snps_high_conf_vcf_gz` | Yes | path | Absolute path to 1000 genomes phase 1 high-confidence file, e.g., `/hot/resource/tool-specific-input/GATK/GRCh38/1000G_phase1.snps.high_confidence.hg38.vcf.gz` |
 | `par_bed` | Yes | path | Absolute path to species' Pseudo-autosomal Region (PAR) BED. See [here](docs/xy_filtration_workflow.md) |
 | `work_dir` | optional | path | Path of working directory for Nextflow. When included in the sample config file, Nextflow intermediate files and logs will be saved to this directory. With ucla_cds, the default is `/scratch` and should only be changed for testing/development. Changing this directory to `/hot` or `/tmp` can lead to high server latency and potential disk space limitations, respectively. |
-| `docker_container_registry` | optional | string | Registry containing tool Docker images. Default: `ghcr.io/theboutroslab` |
+| `docker_container_registry` | optional | string | Registry containing tool Docker images. Default: `ghcr.io/uclahs-cds` |
 | `base_resource_update` | optional | namespace | Namespace of parameters to update base resource allocations in the pipeline. Usage and structure are detailed in `template.config` and below. |
 
 #### Base resource allocation updaters
