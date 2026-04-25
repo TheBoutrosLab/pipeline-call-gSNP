@@ -18,6 +18,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Changed
 - Update resource handling to generalized handler
 - Use `TheBoutrosLab` submodules
+- Update GATK to 4.6.2.0
+- Update Picard to 3.4.0
+- Update Hail to 0.2.138
 
 ---
 
