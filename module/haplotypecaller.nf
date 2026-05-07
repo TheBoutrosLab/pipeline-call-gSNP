@@ -64,7 +64,7 @@ process run_HaplotypeCallerGVCF_GATK {
     """
     set -euo pipefail
 
-    gatk --java-options "-Xmx${(task.memory - params.gatk_command_mem_diff).getMega()}m -DGATK_STACKTRACE_ON_USER_EXCEPTION=true -Djava.io.tmpdir=${workDir}" \
+    gatk --java-options "-Xmx${(task.memory - params.gatk_command_mem_diff).getMega()}m -DGATK_STACKTRACE_ON_USER_EXCEPTION=true -Djava.io.tmpdir=\$(pwd)" \
         HaplotypeCaller \
         --input ${bam} \
         --output ${output_filename} \

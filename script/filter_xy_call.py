@@ -138,9 +138,6 @@ with open(vcf_source_file, 'r', encoding='utf-8') as vcf_source:
 
 script_command_entry = f'##XYFiltration=<CommandLine={SCRIPT_COMMAND}>'
 vcf_source = vcf_source_content + script_command_entry
-temp_file_path = os.path.join(tempfile.gettempdir(), 'temp_file.txt')
-with open(temp_file_path, 'w', encoding='utf-8') as temp_file:
-    temp_file.write(vcf_source)
 
 #Import PAR BED file
 par = hl.import_bed(
@@ -205,10 +202,13 @@ elif genetic_sex == 'XX':
 output_vcf = hl.MatrixTable.union_rows(*autosomes_sex_filtered)
 OUTPUT_FILE = f'{output_dir}/{output_name}.vcf.bgz'
 
-hl.export_vcf(
-    dataset = output_vcf,
-    output = OUTPUT_FILE,
-    tabix = True,
-    metadata = vcf_header,
-    append_to_header = temp_file_path
-    )
+with tempfile.NamedTemporaryFile(mode='w+t') as temp_file:
+    temp_file.write(vcf_source)
+
+    hl.export_vcf(
+        dataset = output_vcf,
+        output = OUTPUT_FILE,
+        tabix = True,
+        metadata = vcf_header,
+        append_to_header = temp_file.name
+        )
