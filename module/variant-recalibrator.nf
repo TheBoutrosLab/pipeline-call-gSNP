@@ -25,7 +25,7 @@ process run_VariantRecalibratorINDEL_GATK {
       enabled: params.save_intermediate_files,
       pattern: "*_output-indel.{recal*,tranches}"
 
-    publishDir path: "${params.output_dir_base}/QC/${task.process.replace(':', '/')}",
+    publishDir path: "${META.output_dir_base}/QC/${task.process.replace(':', '/')}",
       mode: "copy",
       pattern: "*_output-indel.{plots*}"
 
