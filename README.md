@@ -71,33 +71,33 @@ Generate sha512 checksum for VCFs and GVCFs.
 
 ### HaplotypeCaller
 
-#### 2. Run HaplotypeCaller
+#### 1. Run HaplotypeCaller
 Generate VCF for each split interval using HaplotypeCaller. Generate GVCF for SNPs and INDELs.
 
-#### 3. Merge raw VCFs and GVCFs
+#### 2. Merge raw VCFs and GVCFs
 Merge raw variants from each interval.
 
-#### 4. VQSR - SNPs
+#### 3. VQSR - SNPs
 Generate VQSR (Variant Quality Score Recalibration) model for SNPs.
 
-#### 5. VQSR - INDELs
+#### 4. VQSR - INDELs
 Generate VQSR model for INDELs.
 
-#### 6. VQSR - Apply SNP model
+#### 5. VQSR - Apply SNP model
 Take the whole sample raw VCF from Step 3 as input, and apply the model in Step 4 to generate variants in which only SNPs are recalibrated.
 
-#### 7. VQSR Apply INDEL model
+#### 6. VQSR Apply INDEL model
 Take the output from Step 6 as input, and apply the model in Step 5 to recalibrate only INDELs.
 
-##### Steps 4 through 7 model the technical profile of variants in a training set and uses that to filter out probable artifacts from the raw VCF. After these four steps, a recalibrated VCF is generated.
+##### Steps 3 through 6 model the technical profile of variants in a training set and uses that to filter out probable artifacts from the raw VCF. After these four steps, a recalibrated VCF is generated.
 
-#### 8. Filter gSNP – Filter out ambiguous variants
+#### 7. Filter gSNP – Filter out ambiguous variants
 Use customized Perl script to filter out ambiguous variants.
 
-#### 9. Adjust chrX and chrY genotypes based on sample sex from recalibrated VCF
+#### 8. Adjust chrX and chrY genotypes based on sample sex from recalibrated VCF
 Apply XY filtration workflow to recalibrated VCF as described [here](docs/xy_filtration_workflow.md). XY Filtration will be skipped when `genetic_sex = 'unknown'`.
 
-#### 10. Generate sha512 checksum
+#### 9. Generate sha512 checksum
 Generate sha512 checksum for VCFs and GVCFs.
 
 ---
