@@ -85,7 +85,7 @@ process call_gSNP_DeepVariant {
         --regions=${intervals} \
         \$haploid_args
 
-    export VCF_CALLS=`zgrep -v ^# ${vcf_filename} | wc -l`
-    export GVCF_CALLS=`zgrep -v ^# ${gvcf_filename} | wc -l`
+    export VCF_CALLS=`gzip -cd ${vcf_filename} | awk '!/^#/ { count++ } END { print count+0 }'`
+    export GVCF_CALLS=`gzip -cd ${gvcf_filename} | awk '!/^#/ { count++ } END { print count+0 }'`
     """
 }
