@@ -29,11 +29,6 @@ process run_VariantRecalibratorINDEL_GATK {
       mode: "copy",
       pattern: "*_output-indel.{plots*}"
 
-    publishDir path: "${params.log_output_dir}/process-log",
-      pattern: ".command.*",
-      mode: "copy",
-      saveAs: { "${task.process.replace(':', '/')}/log${file(it).getName()}" }
-
     input:
     val(META)
     path(reference_fasta)
@@ -45,7 +40,6 @@ process run_VariantRecalibratorINDEL_GATK {
 
 
     output:
-    path(".command.*")
     path("${output_filename}_output-indel.plots.R")
     path("${output_filename}_output-indel.plots.R.pdf")
     tuple path(sample_vcf),
@@ -124,11 +118,6 @@ process run_VariantRecalibratorSNP_GATK {
       mode: "copy",
       pattern: "*_output-snp.{plots*,tranches.pdf}"
 
-    publishDir path: "${params.log_output_dir}/process-log",
-      pattern: ".command.*",
-      mode: "copy",
-      saveAs: { "${task.process.replace(':', '/')}/log${file(it).getName()}" }
-
     input:
     val(META)
     path(reference_fasta)
@@ -146,7 +135,6 @@ process run_VariantRecalibratorSNP_GATK {
 
 
     output:
-    path(".command.*")
     path("${output_filename}_output-snp.plots.R")
     path("${output_filename}_output-snp.plots.R.pdf")
     path("${output_filename}_output-snp.tranches.pdf")
@@ -225,11 +213,6 @@ process run_ApplyVQSR_GATK {
       mode: "copy",
       pattern: "*SNP-AND-INDEL.vcf.gz{,.tbi}"
 
-    publishDir path: "${params.log_output_dir}/process-log",
-      pattern: ".command.*",
-      mode: "copy",
-      saveAs: { "${task.process.replace(':', '/')}/log${file(it).getName()}" }
-
     input:
     val(META)
     val(mode)
@@ -241,7 +224,6 @@ process run_ApplyVQSR_GATK {
 
 
     output:
-    path(".command.*")
     tuple val(sample_id), path(output_filename), path("${output_filename}.tbi"), emit: output_ch_vqsr
 
     script:

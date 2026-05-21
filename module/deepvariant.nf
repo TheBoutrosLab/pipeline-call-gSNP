@@ -25,10 +25,8 @@ process call_gSNP_DeepVariant {
                mode: "copy",
                pattern: "*.vcf.gz*",
                enabled: params.save_intermediate_files
-    publishDir "${params.log_output_dir}/process-log",
-               mode: "copy",
-               pattern: ".command.*",
-               saveAs: { "${task.process.replace(':', '/')}-${sample_id}/${interval_id}/log${file(it).getName()}" }
+
+    ext log_dir_suffix: { "-${sample_id}/${interval_id}" }
 
     input:
     val(META)
@@ -41,7 +39,6 @@ process call_gSNP_DeepVariant {
     output:
     tuple val(sample_id), path(vcf_filename), path("${vcf_filename}.tbi"), env(VCF_CALLS), emit: vcf
     tuple val(sample_id), path(gvcf_filename), path("${gvcf_filename}.tbi"), env(GVCF_CALLS), emit: gvcf
-    path ".command.*"
 
     script:
     output_filename_base = generate_standard_filename(

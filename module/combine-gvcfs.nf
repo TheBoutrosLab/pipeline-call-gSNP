@@ -9,10 +9,8 @@ process run_CombineGVCFs_GATK {
         mode: "copy",
         enabled: params.save_intermediate_files,
         pattern: '*g.vcf.gz*'
-    publishDir path: "${params.log_output_dir}/process-log",
-        pattern: ".command.*",
-        mode: "copy",
-        saveAs: { "${task.process.replace(':', '/')}/${task.process.split(':')[-1]}-${interval_id}/log${file(it).getName()}" }
+
+    ext log_dir_suffix: { "/${task.process.split(':')[-1]}-${interval_id}" }
 
     input:
     val(META)
@@ -22,7 +20,6 @@ process run_CombineGVCFs_GATK {
     tuple path(gvcfs), path(gvcf_indices), path(interval_path), val(interval_id)
 
     output:
-    path(".command.*")
     tuple path(output_filename), path("${output_filename}.tbi"), path(interval_path), val(interval_id), emit: combined_gvcf
 
     script:

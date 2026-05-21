@@ -18,10 +18,8 @@ process convert_IntervalListToBed_GATK {
                mode: "copy",
                pattern: "*-contig.bed",
                enabled: params.save_intermediate_files
-    publishDir "${params.log_output_dir}/process-log",
-               mode: "copy",
-               pattern: ".command.*",
-               saveAs: { "${task.process.replace(':', '/')}-${interval_id}/log${file(it).getName()}" }
+
+    ext log_dir_suffix: { "-${interval_id}" }
 
     input:
     val(META)
@@ -29,7 +27,6 @@ process convert_IntervalListToBed_GATK {
 
     output:
     tuple val(interval_id), path(output_filename), emit: interval_bed
-    path ".command.*"
 
     script:
     output_filename = "${file(intervals).baseName}.bed"
