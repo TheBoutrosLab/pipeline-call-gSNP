@@ -10,10 +10,7 @@ process run_GenotypeGVCFs_GATK {
         enabled: params.save_intermediate_files,
         pattern: '*.vcf*'
 
-    publishDir path: "${params.log_output_dir}/process-log",
-        pattern: ".command.*",
-        mode: "copy",
-        saveAs: { "${task.process.replace(':', '/')}/${task.process.split(':')[-1]}-${interval_id}/log${file(it).getName()}" }
+    ext log_dir_suffix: { "/${task.process.split(':')[-1]}-${interval_id}" }
 
     input:
     val(META)
@@ -25,7 +22,6 @@ process run_GenotypeGVCFs_GATK {
     tuple path(combined_gvcf), path(combined_gvcf_index), path(interval_path), val(interval_id)
 
     output:
-    path(".command.*")
     tuple path(output_filename), path("${output_filename}.tbi"), emit: vcfs
 
     script:
