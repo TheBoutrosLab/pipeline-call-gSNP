@@ -30,10 +30,7 @@ process run_HaplotypeCallerGVCF_GATK {
       enabled: params.save_intermediate_files,
       pattern: '*.vcf*'
 
-    publishDir path: "${params.log_output_dir}/process-log",
-      pattern: ".command.*",
-      mode: "copy",
-      saveAs: { "${task.process.replace(':', '/')}/${task.process.split(':')[-1]}-${sample_id}-${interval_id}/log${file(it).getName()}" }
+    ext log_dir_suffix: { "/${task.process.split(':')[-1]}-${sample_id}-${interval_id}" }
 
     input:
     val(META)
@@ -46,7 +43,6 @@ process run_HaplotypeCallerGVCF_GATK {
 
 
     output:
-    path(".command.*")
     tuple val(sample_id), path(output_filename), path("${output_filename}.tbi"), path(interval_path), val(interval_id), emit: gvcfs
 
     script:
