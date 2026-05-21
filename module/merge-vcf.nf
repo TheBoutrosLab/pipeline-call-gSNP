@@ -22,17 +22,13 @@ process run_MergeVcfs_Picard {
       mode: "copy",
       pattern: "*.vcf*"
 
-    publishDir path: "${params.log_output_dir}/process-log",
-      pattern: ".command.*",
-      mode: "copy",
-      saveAs: { "${task.process.replace(':', '/')}-${id}/log${file(it).getName()}" }
+    ext log_dir_suffix: { "-${id}" }
 
     input:
     val(META)
     tuple path(vcfs), path(vcf_indices), val(vcf_type), val(id)
 
     output:
-    path(".command.*")
     tuple val(id), path("*.vcf{,.gz}"), path("*.vcf.{idx,gz.tbi}"), emit: merged_vcf
 
     script:
