@@ -15,6 +15,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Changed
 
 - Remove usage of `addParams`
+- Use `methods.setup_process_afterscript()` for process logs
 
 ## [11.1.0] - 2026-04-28
 
