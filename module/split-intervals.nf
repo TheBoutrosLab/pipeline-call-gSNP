@@ -21,10 +21,6 @@ process run_SplitIntervals_GATK {
                mode: "copy",
                pattern: "*-contig.interval_list",
                enabled: params.save_intermediate_files
-    publishDir "${params.log_output_dir}/process-log",
-               mode: "copy",
-               pattern: ".command.*",
-               saveAs: { "${task.process.replace(':', '/')}/log${file(it).getName()}" }
 
     input:
     path intervals
@@ -34,7 +30,6 @@ process run_SplitIntervals_GATK {
 
     output:
     path "*-contig.interval_list", emit: interval_list
-    path ".command.*"
 
     script:
     subdivision_mode = params.is_targeted ? "--subdivision-mode BALANCING_WITHOUT_INTERVAL_SUBDIVISION" : ""
