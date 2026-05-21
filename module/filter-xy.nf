@@ -23,12 +23,7 @@ process filter_XY_Hail {
       mode: "copy",
       pattern: '*.vcf.bgz*'
 
-    publishDir path: "${params.log_output_dir}/process-log",
-      pattern: ".command.*",
-      mode: "copy",
-      saveAs: {
-        "${task.process.replace(':', '/')}-${sample_id}/log${file(it).getName()}"
-        }
+    ext log_dir_suffix: { "-${sample_id}" }
 
     input:
     val(META)
@@ -39,7 +34,6 @@ process filter_XY_Hail {
     path(script_dir)
 
     output:
-    path(".command.*")
     tuple path("${output_filename}.vcf.bgz"), path("${output_filename}.vcf.bgz.tbi"), emit: xy_filtered_vqsr
 
     script:

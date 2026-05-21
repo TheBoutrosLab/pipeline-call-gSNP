@@ -22,11 +22,6 @@ process filter_gSNP_GATK {
       mode: "copy",
       pattern: "${output_filename}*"
 
-    publishDir path: "${params.log_output_dir}/process-log",
-      pattern: ".command.*",
-      mode: "copy",
-      saveAs: { "${task.process.replace(':', '/')}/log${file(it).getName()}" }
-
     input:
     val(META)
     path(reference_fasta)
@@ -35,7 +30,6 @@ process filter_gSNP_GATK {
     tuple val(sample_id), path(sample_vcf), path(sample_vcf_tbi)
 
     output:
-    path(".command.*")
     tuple path("${output_filename}_snv.vcf.gz"),
           path("${output_filename}_snv.vcf.gz.tbi"),
           path("${output_filename}_indel.vcf.gz"),
