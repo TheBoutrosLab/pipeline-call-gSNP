@@ -91,7 +91,7 @@ workflow {
         .collect()
 
     base_meta = Channel.value([
-        'log_output_dir': params.log_output_dir,
+        'log_output_dir': "${params.log_output_dir}/process-log",
         'output_dir': params.output_dir_base
     ])
 
