@@ -75,6 +75,10 @@
                 </li>
               </ul>
               <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../profiles/">Profiles</a>
+                </li>
+              </ul>
+              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../discussions/">Discussions</a>
                 </li>
               </ul>
@@ -106,7 +110,7 @@
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
       <li class="breadcrumb-item active">Inputs</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/TheBoutrosLab/pipeline-call-gSNP/blob/0acdcddaa36b02a2adf639bedd9eca4a7a93b108/README.md" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/TheBoutrosLab/pipeline-call-gSNP/blob/2814bb0c7571cb4d34413963600cda1baadd6511/README.md" class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
   <hr/>
@@ -275,6 +279,30 @@ input:
 <td style="text-align: left;">Registry containing tool Docker images. Default: <code>ghcr.io/uclahs-cds</code></td>
 </tr>
 <tr>
+<td style="text-align: left;"><code>apptainer_library</code></td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">path</td>
+<td style="text-align: left;">Path to readable Apptainer library directory containing any existing Apptainer images.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>apptainer_cache</code></td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">path</td>
+<td style="text-align: left;">Path to writable Apptainer cache directory where images will be cached.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>singularity_library</code></td>
+<td style="text-align: left;">optional</td>
+<td style="text-align: left;">path</td>
+<td style="text-align: left;">Path to readable Singularity library directory containing any existing Singularity images.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>singularity_cache</code></td>
+<td style="text-align: left;">optional</td>
+<td style="text-align: left;">path</td>
+<td style="text-align: left;">Path to writable Singularity cache directory where images will be cached.</td>
+</tr>
+<tr>
 <td style="text-align: left;"><code>base_resource_update</code></td>
 <td style="text-align: left;">optional</td>
 <td style="text-align: left;">namespace</td>
@@ -283,7 +311,7 @@ input:
 </tbody>
 </table>
 <h4 id="base-resource-allocation-updaters">Base resource allocation updaters</h4>
-<p>To update the base resource (cpus or memory) allocations for processes, use the following structure and add the necessary parts. The default allocations can be found in the <a href="https://github.com/TheBoutrosLab/pipeline-call-gSNP/blob/0acdcddaa36b02a2adf639bedd9eca4a7a93b108/config">node-specific config files</a></p>
+<p>To update the base resource (cpus or memory) allocations for processes, use the following structure and add the necessary parts. The default allocations can be found in the <a href="https://github.com/TheBoutrosLab/pipeline-call-gSNP/blob/2814bb0c7571cb4d34413963600cda1baadd6511/config">node-specific config files</a></p>
 <pre><code class="language-Nextflow">base_resource_update {
     memory = [
         [['process_name', 'process_name2'], &lt;multiplier for resource&gt;],

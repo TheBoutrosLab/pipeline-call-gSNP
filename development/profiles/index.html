@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>License - pipeline-call-gSNP</title>
+    <title>Profiles - pipeline-call-gSNP</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -13,8 +13,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "License";
-        var mkdocs_page_input_path = "license.md";
+        var mkdocs_page_name = "Profiles";
+        var mkdocs_page_input_path = "profiles.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -64,8 +64,10 @@
                 <li class="toctree-l1"><a class="reference internal" href="../outputs/">Outputs</a>
                 </li>
               </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../profiles/">Profiles</a>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Profiles</a>
+    <ul class="current">
+    </ul>
                 </li>
               </ul>
               <ul>
@@ -80,10 +82,8 @@
                 <li class="toctree-l1"><a class="reference internal" href="../references/">References</a>
                 </li>
               </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="./">License</a>
-    <ul class="current">
-    </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../license/">License</a>
                 </li>
               </ul>
       </div>
@@ -100,7 +100,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">License</li>
+      <li class="breadcrumb-item active">Profiles</li>
     <li class="wy-breadcrumbs-aside">
           <a href="https://github.com/TheBoutrosLab/pipeline-call-gSNP/blob/2814bb0c7571cb4d34413963600cda1baadd6511/README.md" class="icon icon-github"> Edit on GitHub</a>
     </li>
@@ -110,18 +110,20 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="license">License</h2>
-<p>Authors: Yash Patel (YashPatel@mednet.ucla.edu), Shu Tao (shutao@mednet.ucla.edu), Stefan Eng (stefaneng@mednet.ucla.edu)</p>
-<p>Call-gSNP is licensed under the GNU General Public License version 2. See the file LICENSE for the terms of the GNU GPL license.</p>
-<p>Call-gSNP takes BAM files and utilizes GATK to call short germline variants (SNP and INDEL).</p>
-<p>Copyright (C) 2021-2023 University of California Los Angeles ("Boutros Lab") All rights reserved.</p>
-<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.</p>
-<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+                <h2 id="profiles">Profiles</h2>
+<p>Profiles can be selected to control which containerization system will be used. Profile selection can be passed to the nextflow run command using <code>-profile</code>. Available profiles:</p>
+<ul>
+<li><code>docker</code> - Use Docker as the containerization system</li>
+<li><code>apptainer</code> - Use Apptainer as the containerization system</li>
+<li><code>singularity</code> - Use Singularity as the containerization system</li>
+</ul>
+<hr />
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../references/" class="btn btn-neutral float-left" title="References"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../outputs/" class="btn btn-neutral float-left" title="Outputs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../discussions/" class="btn btn-neutral float-right" title="Discussions">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -148,8 +150,10 @@
         </span>
     
     
-      <span><a href="../references/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../outputs/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
+    
+      <span><a href="../discussions/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
