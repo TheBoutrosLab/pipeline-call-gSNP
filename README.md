@@ -151,6 +151,8 @@ For normal-only or tumor-only samples, exclude the fields for the other state.
 | `par_bed` | Yes | path | Absolute path to species' Pseudo-autosomal Region (PAR) BED. See [here](docs/xy_filtration_workflow.md) |
 | `work_dir` | optional | path | Path of working directory for Nextflow. When included in the sample config file, Nextflow intermediate files and logs will be saved to this directory. With ucla_cds, the default is `/scratch` and should only be changed for testing/development. Changing this directory to `/hot` or `/tmp` can lead to high server latency and potential disk space limitations, respectively. |
 | `docker_container_registry` | optional | string | Registry containing tool Docker images. Default: `ghcr.io/uclahs-cds` |
+| `apptainer_library` | no | path | Path to readable Apptainer library directory containing any existing Apptainer images. |
+| `apptainer_cache` | no | path | Path to writable Apptainer cache directory where images will be cached. |
 | `singularity_library` | optional | path | Path to readable Singularity library directory containing any existing Singularity images. |
 | `singularity_cache` | optional | path | Path to writable Singularity cache directory where images will be cached. |
 | `base_resource_update` | optional | namespace | Namespace of parameters to update base resource allocations in the pipeline. Usage and structure are detailed in `template.config` and below. |
