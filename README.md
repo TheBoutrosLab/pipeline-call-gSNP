@@ -8,9 +8,10 @@
 4. [Pipeline Steps](#pipeline-steps)
 5. [Inputs](#inputs)
 5. [Outputs](#outputs)
-6. [Discussions](#discussions)
-7. [Contributors](#contributors)
-8. [References](#references)
+6. [Profiles](#profiles)
+7. [Discussions](#discussions)
+8. [Contributors](#contributors)
+9. [References](#references)
 
 ## Overview
 
@@ -150,6 +151,8 @@ For normal-only or tumor-only samples, exclude the fields for the other state.
 | `par_bed` | Yes | path | Absolute path to species' Pseudo-autosomal Region (PAR) BED. See [here](docs/xy_filtration_workflow.md) |
 | `work_dir` | optional | path | Path of working directory for Nextflow. When included in the sample config file, Nextflow intermediate files and logs will be saved to this directory. With ucla_cds, the default is `/scratch` and should only be changed for testing/development. Changing this directory to `/hot` or `/tmp` can lead to high server latency and potential disk space limitations, respectively. |
 | `docker_container_registry` | optional | string | Registry containing tool Docker images. Default: `ghcr.io/uclahs-cds` |
+| `singularity_library` | optional | path | Path to readable Singularity library directory containing any existing Singularity images. |
+| `singularity_cache` | optional | path | Path to writable Singularity cache directory where images will be cached. |
 | `base_resource_update` | optional | namespace | Namespace of parameters to update base resource allocations in the pipeline. Usage and structure are detailed in `template.config` and below. |
 
 #### Base resource allocation updaters
@@ -235,6 +238,16 @@ base_resource_update {
 | `<Hail>_<GATK>_<dataset_id>_<patient_id>.vcf.bgz.tbi.sha512` | chrX/Y filtered SNP and INDEL recalibrated variants index checksum |
 | `report.html`, `timeline.html` and `trace.txt` | Nextflow report, timeline and trace files |
 | `*.command.*` | Process specific logging files created by nextflow |
+
+---
+
+## Profiles
+
+Profiles can be selected to control which containerization system will be used. Profile selection can be passed to the nextflow run command using `-profile`. Available profiles:
+
+- `docker` - Use Docker as the containerization system
+- `apptainer` - Use Apptainer as the containerization system
+- `singularity` - Use Singularity as the containerization system
 
 ---
 
