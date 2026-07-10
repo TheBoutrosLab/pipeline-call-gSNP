@@ -70,6 +70,8 @@ process call_gSNP_DeepVariant {
         haploid_args=`echo ${haploid_args_raw} | sed 's:PREFIX::g'`
     fi
 
+    export TMPDIR="\$PWD/work"
+
     /opt/deepvariant/bin/run_deepvariant \
         --model_type=${model_type} \
         --ref=${reference_fasta} \
