@@ -46,6 +46,9 @@ process filter_XY_Hail {
     """
     set -euo pipefail
 
+    mkdir work
+    export TMPDIR="\$PWD/work"
+
     zgrep "##source=" ${recalibrated_vcf} > ./vcf_source.txt
 
     python ${script_dir}/filter_xy_call.py \
@@ -57,5 +60,7 @@ process filter_XY_Hail {
         --ref-index ${reference_index} \
         --output_name ${output_filename} \
         --output_dir .
+
+    rm -r work
     """
 }
