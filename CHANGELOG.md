@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [12.1.2] - 2026-07-13
+
 ## [12.1.1] - 2026-07-10
 
 ### Added
@@ -263,6 +265,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 [12.0.0]: https://github.com/TheBoutrosLab/pipeline-call-gSNP/compare/v11.1.0...v12.0.0
 [12.1.0]: https://github.com/TheBoutrosLab/pipeline-call-gSNP/compare/v12.0.0...v12.1.0
 [12.1.1]: https://github.com/TheBoutrosLab/pipeline-call-gSNP/compare/v12.1.0...v12.1.1
+[12.1.2]: https://github.com/TheBoutrosLab/pipeline-call-gSNP/compare/v12.1.1...v12.1.2
 [7.0.0]: https://github.com/TheBoutrosLab/pipeline-call-gSNP/releases/tag/v7.0.0
 [7.1.0]: https://github.com/TheBoutrosLab/pipeline-call-gSNP/compare/v7.0.0...v7.1.0
 [7.2.0]: https://github.com/TheBoutrosLab/pipeline-call-gSNP/compare/v7.1.0...v7.2.0
