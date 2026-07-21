@@ -61,6 +61,6 @@ process filter_XY_Hail {
         --output_name ${output_filename} \
         --output_dir .
 
-    rm -r work
+    rm -rf work
     """
 }
