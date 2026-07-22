@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Filter XY calls from a germline VCF file - pipeline-call-gSNP</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Filter XY calls from a germline VCF file";
+        var mkdocs_page_input_path = "xy_filtration_workflow.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> pipeline-call-gSNP
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../overview/">Overview</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../how-to-run/">How To Run</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../flow-diagram/">Flow Diagram</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../pipeline-steps/">Pipeline Steps</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../inputs/">Inputs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../outputs/">Outputs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../profiles/">Profiles</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../discussions/">Discussions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contributors/">Contributors</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../references/">References</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../license/">License</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">pipeline-call-gSNP</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Filter XY calls from a germline VCF file</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/TheBoutrosLab/pipeline-call-gSNP/blob/v12.1.3/README.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="filter-xy-calls-from-a-germline-vcf-file">Filter XY calls from a germline VCF file</h1>
+<blockquote>
+<p><strong>Note</strong>: Currently, the XY Filter would only work on species with XY/XX sex chromosome model.
+<strong>Note</strong>: XY Filter will only run when <code>genetic_sex</code> is either <code>XY</code> or <code>XX</code>.</p>
+</blockquote>
+<h2 id="steps">Steps:</h2>
+<ol>
+<li>Extract autosomes and chrX/Y variants from input VCF</li>
+<li>Filter chrX/Y variants</li>
+<li>Merge autosomal and filtered chrX/Y variants</li>
+</ol>
+<h2 id="chrxy-filter-criteria">chrX/Y Filter Criteria:</h2>
+<ul>
+<li>Extract chrX/Y calls</li>
+<li>Extract chrX/Y calls overlapping with Pseudo-Autosomal Regions (PARs)</li>
+<li>if <code>genetic_sex</code> is <code>XY</code>:<ul>
+<li>For non-PAR chrX/Y calls<ul>
+<li>Filter out heterozygous <code>GT</code> calls in chrX and chrY</li>
+<li>Transform homozygous <code>GT=1/1</code> to hemizygous <code>GT=1</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>If <code>genetic_sex</code> is <code>XX</code>:<ul>
+<li>Filter out any <code>chrY</code> calls regardless of PAR or non-PAR</li>
+</ul>
+</li>
+</ul>
+<h2 id="pseudo-autosomal-regions-pars">Pseudo-Autosomal Regions (PARs)</h2>
+<h3 id="grch38-giab-xy-stratitification-par-v35">GRCh38 - GIAB XY Stratitification PAR <a href="https://ftp-trace.ncbi.nlm.nih.gov/ReferenceSamples/giab/release/genome-stratifications/v3.5/GRCh38@all/XY/">v3.5</a></h3>
+<p>Path: <code>/hot/resource/database/GIAB-genome-stratifications-v3.5/processed/GRCh38/XY/GIAB-XY-PAR-v3.5_GRCh38.bed</code></p>
+<p>| CHROM | START | END | PAR |
+|---|---|---|---|---|
+| chrX | 10000 | 44821 | PAR1 |
+| chrX | 94821 | 133871 | PAR1 |
+| chrX | 222346 | 226276 | PAR1 |
+| chrX | 226351 | 1949345 | PAR1 |
+| chrX | 2132994 | 2137388 | PAR1 |
+| chrX | 2137488 | 2781479 | PAR1 |
+| chrX | 89140830 | 93428068 | PAR3/XTR |
+| chrX | 155701383 | 156030895 | PAR2 |
+| chrY | 10001 | 44821 | PAR1+PAR3/XTR |
+| chrY | 94821 | 133871 | PAR1+PAR3/XTR |
+| chrY | 222346 | 226276 | PAR1+PAR3/XTR |
+| chrY | 226351 | 1949345 | PAR1+PAR3/XTR |
+| chrY | 2132994 | 2137388 | PAR1+PAR3/XTR |
+| chrY | 2137488 | 2781479 | PAR1+PAR3/XTR |
+| chrY | 3050044 | 6235111 | PAR1+PAR3/XTR |
+| chrY | 6532906 | 6748713 | PAR1+PAR3/XTR |
+| chrY | 56887902 | 57217415 | PAR2 |</p>
+<h3 id="grcm39">GRCm39</h3>
+<p>Path: <code>/hot/resource/database/GRCm39-stratifications/original/GRCm39/pseudoautosomal_regions_GRCm39.bed</code></p>
+<table>
+<thead>
+<tr>
+<th>CHROM</th>
+<th>START</th>
+<th>END</th>
+<th>PAR</th>
+<th>REFERENCE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X</td>
+<td>168752755</td>
+<td>169376592</td>
+<td>PAR</td>
+<td>GRCm39</td>
+</tr>
+<tr>
+<td>Y</td>
+<td>4072168</td>
+<td>4161965</td>
+<td>CEN</td>
+<td>GRCm39</td>
+</tr>
+<tr>
+<td>Y</td>
+<td>90757114</td>
+<td>91355967</td>
+<td>PAR</td>
+<td>GRCm39</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/TheBoutrosLab/pipeline-call-gSNP/tree/v12.1.3" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../js/version-select.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
