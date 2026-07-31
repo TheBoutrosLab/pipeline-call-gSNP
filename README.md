@@ -280,7 +280,8 @@ Call-gSNP is licensed under the GNU General Public License version 2. See the fi
 
 Call-gSNP takes BAM files and utilizes GATK to call short germline variants (SNP and INDEL).
 
-Copyright (C) 2021-2023 University of California Los Angeles ("Boutros Lab") All rights reserved.
+Copyright (C) 2021-2025 University of California Los Angeles ("Boutros Lab")
+Copyright (C) 2026 Sanford Burnham Prebys Medical Discovery Institute ("Boutros Lab")
 
 This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
 
