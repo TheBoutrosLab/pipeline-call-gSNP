@@ -12,6 +12,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 - Update GATK to 4.7.0.0
 
+### Removed
+
+- Remove separated NFTest YAML
+
 ## [12.1.3] - 2026-07-22
 
 ### Fixed
