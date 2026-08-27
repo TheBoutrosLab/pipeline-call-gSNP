@@ -159,4 +159,8 @@ workflow {
             input_ch_intervals
         )
     }
+
+    workflow.onComplete = {
+        WorkflowFinalizer.completeWorkflow(workflow, params);
+    }
 }
