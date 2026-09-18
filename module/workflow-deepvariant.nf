@@ -1,7 +1,7 @@
 include { convert_IntervalListToBed_GATK } from './convert-intervals.nf'
 include { call_gSNP_DeepVariant } from './deepvariant.nf'
 include { run_MergeVcfs_Picard } from './merge-vcf.nf'
-include { run_SelectVariants_GATK } from '/.filter-variants.nf'
+include { run_SelectVariants_GATK } from './filter-variants.nf'
 include { calculate_sha512 } from './checksum.nf'
 
 workflow deepvariant {
