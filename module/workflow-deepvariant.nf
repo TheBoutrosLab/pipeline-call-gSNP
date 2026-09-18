@@ -1,6 +1,7 @@
 include { convert_IntervalListToBed_GATK } from './convert-intervals.nf'
 include { call_gSNP_DeepVariant } from './deepvariant.nf'
 include { run_MergeVcfs_Picard } from './merge-vcf.nf'
+include { run_SelectVariants_GATK } from '/.filter-variants.nf'
 include { calculate_sha512 } from './checksum.nf'
 
 workflow deepvariant {
@@ -92,11 +93,20 @@ workflow deepvariant {
         input_ch_merge_vcfs.mix(input_ch_merge_gvcfs)
     )
 
+    run_SelectVariants_GATK(
+        workflow_meta,
+        run_MergeVcfs_Picard.out.merged_vcf
+    )
+
     /**
     *   Compute checksums
     */
     run_MergeVcfs_Picard.out.merged_vcf
         .map{ merged -> [merged[1], merged[2]] }
+        .mix(
+            run_SelectVariants_GATK.out.pass_filtered
+                .map{ filtered -> [filtered[1], filtered[2]] }
+        )
         .flatten()
         .set{ input_ch_calculate_checksum }
 
