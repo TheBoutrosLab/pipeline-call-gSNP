@@ -8,6 +8,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+## [12.3.1] - 2026-10-06
+
 ### Changed
 
 - Update module submodule with CRAM validation handling
@@ -301,6 +303,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 [12.1.3]: https://github.com/TheBoutrosLab/pipeline-call-gSNP/compare/v12.1.2...v12.1.3
 [12.2.0]: https://github.com/TheBoutrosLab/pipeline-call-gSNP/compare/v12.1.3...v12.2.0
 [12.3.0]: https://github.com/TheBoutrosLab/pipeline-call-gSNP/compare/v12.2.0...v12.3.0
+[12.3.1]: https://github.com/TheBoutrosLab/pipeline-call-gSNP/compare/v12.3.0...v12.3.1
 [7.0.0]: https://github.com/TheBoutrosLab/pipeline-call-gSNP/releases/tag/v7.0.0
 [7.1.0]: https://github.com/TheBoutrosLab/pipeline-call-gSNP/compare/v7.0.0...v7.1.0
 [7.2.0]: https://github.com/TheBoutrosLab/pipeline-call-gSNP/compare/v7.1.0...v7.2.0
@@ -311,3 +314,4 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 [9.1.0]: https://github.com/TheBoutrosLab/pipeline-call-gSNP/compare/v9.0.1...v9.1.0
 [9.2.0]: https://github.com/TheBoutrosLab/pipeline-call-gSNP/compare/v9.1.0...v9.2.0
 [9.2.1]: https://github.com/TheBoutrosLab/pipeline-call-gSNP/compare/v9.2.0...v9.2.1
+[unreleased]: https://github.com/TheBoutrosLab/pipeline-call-gSNP/compare/v12.3.1...HEAD
