@@ -21,7 +21,8 @@ process filter_XY_Hail {
 
     publishDir path: "${META.output_dir_base}/output",
       mode: "copy",
-      pattern: '*.vcf.bgz*'
+      pattern: '*.vcf.bgz*',
+      failOnError: false
 
     ext log_dir_suffix: { "-${sample_id}" }
 

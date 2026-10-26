@@ -28,7 +28,8 @@ process run_HaplotypeCallerGVCF_GATK {
     publishDir path: "${META.output_dir_base}/intermediate/${task.process.replace(':', '/')}",
       mode: "copy",
       enabled: params.save_intermediate_files,
-      pattern: '*.vcf*'
+      pattern: '*.vcf*',
+      failOnError: false
 
     ext log_dir_suffix: { "/${task.process.split(':')[-1]}-${sample_id}-${interval_id}" }
 
