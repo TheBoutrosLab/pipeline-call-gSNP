@@ -8,6 +8,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+## [13.0.0] - 2026-10-30
+
 ### Changed
 
 - Update to support Nextflow v25.10.5
@@ -315,6 +317,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 [12.3.0]: https://github.com/TheBoutrosLab/pipeline-call-gSNP/compare/v12.2.0...v12.3.0
 [12.3.1]: https://github.com/TheBoutrosLab/pipeline-call-gSNP/compare/v12.3.0...v12.3.1
 [12.3.2]: https://github.com/TheBoutrosLab/pipeline-call-gSNP/compare/v12.3.1...v12.3.2
+[13.0.0]: https://github.com/TheBoutrosLab/pipeline-call-gSNP/compare/v12.3.2...v13.0.0
 [7.0.0]: https://github.com/TheBoutrosLab/pipeline-call-gSNP/releases/tag/v7.0.0
 [7.1.0]: https://github.com/TheBoutrosLab/pipeline-call-gSNP/compare/v7.0.0...v7.1.0
 [7.2.0]: https://github.com/TheBoutrosLab/pipeline-call-gSNP/compare/v7.1.0...v7.2.0
@@ -325,4 +328,4 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 [9.1.0]: https://github.com/TheBoutrosLab/pipeline-call-gSNP/compare/v9.0.1...v9.1.0
 [9.2.0]: https://github.com/TheBoutrosLab/pipeline-call-gSNP/compare/v9.1.0...v9.2.0
 [9.2.1]: https://github.com/TheBoutrosLab/pipeline-call-gSNP/compare/v9.2.0...v9.2.1
-[unreleased]: https://github.com/TheBoutrosLab/pipeline-call-gSNP/compare/v12.3.2...HEAD
+[unreleased]: https://github.com/TheBoutrosLab/pipeline-call-gSNP/compare/v13.0.0...HEAD
