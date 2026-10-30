@@ -23,11 +23,13 @@ process run_VariantRecalibratorINDEL_GATK {
     publishDir path: "${META.output_dir_base}/intermediate/${task.process.replace(':', '/')}",
       mode: "copy",
       enabled: params.save_intermediate_files,
-      pattern: "*_output-indel.{recal*,tranches}"
+      pattern: "*_output-indel.{recal*,tranches}",
+      failOnError: false
 
     publishDir path: "${META.output_dir_base}/QC/${task.process.replace(':', '/')}",
       mode: "copy",
-      pattern: "*_output-indel.{plots*}"
+      pattern: "*_output-indel.{plots*}",
+      failOnError: false
 
     input:
     val(META)
@@ -112,11 +114,13 @@ process run_VariantRecalibratorSNP_GATK {
     publishDir path: "${META.output_dir_base}/intermediate/${task.process.replace(':', '/')}",
       mode: "copy",
       enabled: params.save_intermediate_files,
-      pattern: "*_output-snp.{recal*,tranches}"
+      pattern: "*_output-snp.{recal*,tranches}",
+      failOnError: false
 
     publishDir path: "${META.output_dir_base}/QC/${task.process.replace(':', '/')}",
       mode: "copy",
-      pattern: "*_output-snp.{plots*,tranches.pdf}"
+      pattern: "*_output-snp.{plots*,tranches.pdf}",
+      failOnError: false
 
     input:
     val(META)
@@ -207,11 +211,13 @@ process run_ApplyVQSR_GATK {
     publishDir path: "${META.output_dir_base}/intermediate/${task.process.replace(':', '/')}/",
       mode: "copy",
       enabled: params.save_intermediate_files,
-      pattern: "*-SNP.vcf.gz{,.tbi}"
+      pattern: "*-SNP.vcf.gz{,.tbi}",
+      failOnError: false
 
     publishDir path: "${META.output_dir_base}/output/",
       mode: "copy",
-      pattern: "*SNP-AND-INDEL.vcf.gz{,.tbi}"
+      pattern: "*SNP-AND-INDEL.vcf.gz{,.tbi}",
+      failOnError: false
 
     input:
     val(META)

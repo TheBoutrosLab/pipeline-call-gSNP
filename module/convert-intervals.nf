@@ -17,7 +17,8 @@ process convert_IntervalListToBed_GATK {
     publishDir path: "${META.output_dir_base}/intermediate/${task.process.replace(':', '/')}",
                mode: "copy",
                pattern: "*-contig.bed",
-               enabled: params.save_intermediate_files
+               enabled: params.save_intermediate_files,
+               failOnError: false
 
     ext log_dir_suffix: { "-${interval_id}" }
 

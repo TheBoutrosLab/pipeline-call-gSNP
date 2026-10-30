@@ -20,7 +20,8 @@ process filter_gSNP_GATK {
     container params.docker_image_gatkfilter
     publishDir path: "${META.output_dir_base}/output",
       mode: "copy",
-      pattern: "${output_filename}*"
+      pattern: "${output_filename}*",
+      failOnError: false
 
     input:
     val(META)

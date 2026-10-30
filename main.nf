@@ -1,8 +1,5 @@
 #!/usr/bin/env nextflow
 
-nextflow.enable.dsl=2
-
-
 log.info """\
 ======================================
 C A L L - G S N P  P I P E L I N E
@@ -67,7 +64,7 @@ workflow {
     /**
     *   Input channel processing
     */
-    Channel.from(params.samples_to_process)
+    Channel.fromList(params.samples_to_process)
         .map{ sample -> ['index': indexFile(sample.path)] + sample }
         .set{ input_ch_samples_with_index }
 
@@ -114,7 +111,7 @@ workflow {
     intervals_to_split = Channel.empty()
 
     if (params.is_targeted) {
-        intervals_to_split = Channel.from(params.intervals)
+        intervals_to_split = Channel.of(params.intervals)
     } else {
         extract_GenomeIntervals(
             base_meta.map{ metadata -> [metadata, "${file(params.reference_fasta).parent}/${file(params.reference_fasta).baseName}.dict"] }

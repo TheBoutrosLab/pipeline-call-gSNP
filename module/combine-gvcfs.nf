@@ -8,7 +8,8 @@ process run_CombineGVCFs_GATK {
     publishDir path: "${META.output_dir_base}/intermediate/${task.process.replace(':', '/')}",
         mode: "copy",
         enabled: params.save_intermediate_files,
-        pattern: '*g.vcf.gz*'
+        pattern: '*g.vcf.gz*',
+        failOnError: false
 
     ext log_dir_suffix: { "/${task.process.split(':')[-1]}-${interval_id}" }
 

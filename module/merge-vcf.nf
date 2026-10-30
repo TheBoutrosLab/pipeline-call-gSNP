@@ -20,7 +20,8 @@ process run_MergeVcfs_Picard {
 
     publishDir path: "${META.output_dir_base}/output",
       mode: "copy",
-      pattern: "*.vcf*"
+      pattern: "*.vcf*",
+      failOnError: false
 
     ext log_dir_suffix: { "-${id}" }
 

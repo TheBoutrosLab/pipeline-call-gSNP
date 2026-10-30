@@ -24,7 +24,8 @@ process call_gSNP_DeepVariant {
     publishDir path: "${META.output_dir_base}/intermediate/${task.process.replace(':', '/')}",
                mode: "copy",
                pattern: "*.vcf.gz*",
-               enabled: params.save_intermediate_files
+               enabled: params.save_intermediate_files,
+               failOnError: false
 
     ext log_dir_suffix: { "-${sample_id}/${interval_id}" }
 
@@ -37,8 +38,8 @@ process call_gSNP_DeepVariant {
     path(par_regions)
 
     output:
-    tuple val(sample_id), path(vcf_filename), path("${vcf_filename}.tbi"), env(VCF_CALLS), emit: vcf
-    tuple val(sample_id), path(gvcf_filename), path("${gvcf_filename}.tbi"), env(GVCF_CALLS), emit: gvcf
+    tuple val(sample_id), path(vcf_filename), path("${vcf_filename}.tbi"), env('VCF_CALLS'), emit: vcf
+    tuple val(sample_id), path(gvcf_filename), path("${gvcf_filename}.tbi"), env('GVCF_CALLS'), emit: gvcf
 
     script:
     output_filename_base = generate_standard_filename(
